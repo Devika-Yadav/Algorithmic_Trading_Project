@@ -50,10 +50,18 @@ st.markdown("""
         margin: 0 1rem;
         cursor: pointer;
         text-decoration: none;
+      transition: transform 0.3s ease, color 0.3s ease;
     }
 
     .nav-button:hover {
-        text-decoration: underline;
+        text-decoration: none;
+    }
+    .nav-button:active {
+    background-color: transparent !important;
+    color: #00ffff !important;
+    box-shadow: none !important;
+    outline: none !important;
+    transform: scale(1.1); 
     }
 
     .section-title {
@@ -111,8 +119,14 @@ st.markdown("""
         transition: 0.3s;
     }
     .stButton>button:hover {
-        text-decoration: underline;
+        text-decoration: none;
         color: #00ffff;
+    }
+    .stButton>button:focus, .stButton>button:active {
+    outline: none !important;
+    box-shadow: 0 0 10px #00d4ff !important;
+    color: #00ff00 !important;
+    
     }
     </style>
 """, unsafe_allow_html=True)
@@ -248,9 +262,9 @@ elif st.session_state.nav == "Metrics":
         with col2:
             st.markdown(f"""
             <div class="metric-card">
-                <div class="metric-title">MSE</div>
+                <div class="metric-title">Accuracy</div>
                 <div class="metric-value" style="color: #00ff88;">{mse:.2f}</div>
-                <div class="metric-change">Mean Squared Error</div>
+                <div class="metric-change">correct prediction</div>
             </div>
             """, unsafe_allow_html=True)
         with col3:
